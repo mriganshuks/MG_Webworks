@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <Navbar />
-          <main className="relative z-10">{children}</main>
+          <main id="top">{children}</main>
           <Footer />
           <WhatsAppButton />
         </ThemeProvider>
