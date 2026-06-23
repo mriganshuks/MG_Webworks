@@ -40,7 +40,7 @@ export function FounderMessage() {
             {/* Content */}
             <div className="flex-1 text-center md:text-left">
               <p className="text-xl md:text-2xl text-white leading-relaxed mb-8 font-light italic">
-                "Every business deserves a website that not only looks exceptional but also drives real growth. At MG Webworks, our focus is on building high-performance digital experiences that help brands establish trust, attract customers, and stand out in a competitive market. Every project is approached with creativity, precision, and a commitment to delivering measurable results."
+                "Our goal is to create fast, modern, and memorable digital experiences that turn visitors into customers because great websites aren't built just to look good, they're built to help businesses grow."
               </p>
               
               <div className="mb-10">
