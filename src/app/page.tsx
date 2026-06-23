@@ -1,6 +1,7 @@
 "use client";
 
 import { Hero } from "@/components/sections/Hero";
+import { FounderMessage } from "@/components/sections/FounderMessage";
 import { motion } from "framer-motion";
 import { Code2, Paintbrush, Box, Zap, Rocket, Users, MessageSquare } from "lucide-react";
 import Link from "next/link";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <FounderMessage />
       
       {/* Services Section */}
       <section id="services" className="py-24 relative overflow-hidden">
