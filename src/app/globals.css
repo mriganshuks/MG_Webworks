@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #050505;
+  --color-foreground: #ffffff;
+  
+  --color-primary: #7cff4f;
+  --color-primary-dark: #5acc35;
+  --color-primary-glow: rgba(124, 255, 79, 0.5);
+  
+  --color-secondary: #0d2111;
+  --color-secondary-light: #16361d;
+  
+  --color-panel: rgba(255, 255, 255, 0.03);
+  --color-panel-hover: rgba(255, 255, 255, 0.06);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-glow: rgba(124, 255, 79, 0.3);
+  
+  --font-sans: var(--font-inter);
+}
+
+@layer base {
+  :root {
+    --background: #050505;
+    --foreground: #ffffff;
+  }
+  
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: var(--color-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+  }
+  
+  .glass-panel:hover {
+    background: var(--color-panel-hover);
+    border-color: var(--color-border-glow);
+    box-shadow: 0 0 20px var(--color-primary-glow);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px var(--color-primary-glow), 0 0 20px var(--color-primary-glow);
+  }
+  
+  .text-glow-white {
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+  }
+  
+  .box-glow {
+    box-shadow: 0 0 30px var(--color-primary-glow);
+  }
+  
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
