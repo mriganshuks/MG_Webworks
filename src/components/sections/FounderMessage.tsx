@@ -21,7 +21,7 @@ export function FounderMessage() {
           {/* Subtle neon border glow on hover handled by glass-panel utility class */}
           
           <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-10 text-center">
-            Message From The Founder
+            Message From The Lead Developer
           </h2>
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
@@ -36,7 +36,7 @@ export function FounderMessage() {
                 <div className="w-full h-full rounded-full overflow-hidden relative bg-white/5 ring-1 ring-primary/30">
                   <Image
                     src="/founder-profile.webp"
-                    alt="Mriganshu K. Singh — Founder of MG Webworks"
+                    alt="Mriganshu K. Singh — Lead Developer at MG Webworks"
                     fill
                     sizes="128px"
                     className="object-cover object-center"
@@ -56,7 +56,7 @@ export function FounderMessage() {
               
               <div className="mb-10">
                 <h3 className="text-lg font-bold text-white mb-1">Mriganshu K. Singh</h3>
-                <p className="text-primary font-medium text-sm">Founder & Lead Developer, MG Webworks</p>
+                <p className="text-primary font-medium text-sm">The Lead Developer, MG Webworks</p>
               </div>
 
               {/* Trust Indicators */}
