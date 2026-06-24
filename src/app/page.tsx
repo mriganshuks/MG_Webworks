@@ -88,7 +88,7 @@ export default function Home() {
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover object-[center_35%] transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                 />
               </div>
 
