@@ -114,26 +114,53 @@ export default function Home() {
               </div>
             </motion.a>
 
-            {/* Project 2 — unchanged */}
-            <motion.div 
-              key={2}
-              initial="hidden" whileInView="visible" viewport={{ once: true }}
+            {/* Project 2 — MG Neon (Coming Soon) */}
+            <motion.a
+              href="#"
+              onClick={(e) => e.preventDefault()}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}
-              className="group relative rounded-3xl overflow-hidden glass-panel aspect-video border-white/10"
+              className="group relative block rounded-3xl overflow-hidden glass-panel aspect-video border-white/10 cursor-pointer transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(124,255,79,0.15)] hover:-translate-y-1"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent z-10" />
-              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-              
-              <div className="absolute inset-0 bg-[#111] flex items-center justify-center">
-                <span className="text-white/20 font-bold text-4xl">PROJECT 2</span>
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src="/portfolio/mg-neon-featured.webp"
+                  alt="MG Neon — AI Experience Platform"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                />
               </div>
 
-              <div className="absolute bottom-0 left-0 w-full p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-3 border border-primary/30 backdrop-blur-md">WEB3 PLATFORM</div>
-                <h3 className="text-2xl font-bold text-white mb-2">Nexus Exchange</h3>
-                <p className="text-white/70 text-sm">A highly interactive crypto trading platform with real-time 3D data visualization.</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+
+              <div className="absolute top-6 left-6 z-20 pointer-events-none">
+                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary/25 text-primary text-xs font-bold border border-primary/50 backdrop-blur-md shadow-[0_0_18px_rgba(124,255,79,0.45)]">
+                  Coming Soon
+                </span>
               </div>
-            </motion.div>
+
+              <div className="absolute top-6 right-6 z-20 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
+                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/40 backdrop-blur-md">
+                  View Project ↗
+                </span>
+              </div>
+
+              <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-3 border border-primary/30 backdrop-blur-md">
+                  AI EXPERIENCE
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
+                  MG Neon
+                </h3>
+                <p className="text-white/70 text-sm leading-relaxed max-w-md">
+                  An immersive AI-powered digital experience focused on futuristic design, intelligent interactions, and next-generation user experiences.
+                </p>
+              </div>
+            </motion.a>
           </div>
         </div>
       </section>
