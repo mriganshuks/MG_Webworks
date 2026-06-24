@@ -17,7 +17,7 @@ export function Navbar() {
           <Image
             src="/mg-webworks-logo.png"
             alt="MG Webworks logo"
-            width={171}
+            width={147}
             height={96}
             priority
             className="h-10 md:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-[1.03] group-hover:drop-shadow-[0_0_14px_rgba(124,255,79,0.55)]"
