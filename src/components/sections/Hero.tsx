@@ -1,119 +1,145 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShinyText } from "@/components/ui/ShinyText";
-
-const HERO_VIDEO =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4";
-
-const WHATSAPP_URL = "https://wa.me/918427144836";
-const LINKEDIN_URL =
-  "https://www.linkedin.com/in/mriganshu-kumar-singh-578478379?utm_source=share_via&utm_content=profile&utm_medium=member_android";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Activity, Zap, Shield } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative h-screen min-h-[640px] flex flex-col bg-black overflow-hidden">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        aria-hidden="true"
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
-
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
-
-      <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 pt-28 pb-12">
-        {/* Top trust row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="grid lg:grid-cols-2 gap-6 mb-10 lg:mb-16"
-        >
-          <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-xl">
-            We deliver transformative digital solutions that empower businesses with cutting-edge web
-            experiences built to thrive globally.
-          </p>
-          <p className="text-white/80 text-sm md:text-base leading-relaxed lg:text-right lg:justify-self-end max-w-xl">
-            Premium Experiences Built for Growth!
-          </p>
-        </motion.div>
-
-        {/* Center hero */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-white/80 text-xs md:text-sm uppercase tracking-[0.2em] mb-6 md:mb-8"
-          >
-            Premium Digital Experiences
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="font-medium tracking-tighter leading-[0.85] text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
-          >
-            <span className="block text-white">WE BUILD</span>
-            <span className="block text-white">WEBSITES THAT</span>
-            <span className="block">
-              <ShinyText
-                text="GROW BUSINESSES."
-                className="font-medium"
-                baseColor="#7cff4f"
-                shineColor="#ffffff"
-                speed={3}
-                spread={100}
-              />
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.55 }}
-            className="mt-8 md:mt-10 text-white/80 text-sm md:text-base max-w-2xl leading-relaxed"
-          >
-            Modern websites, high-performance experiences, and conversion-focused digital products
-            built for ambitious brands.
-          </motion.p>
-
+    <section className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10 w-full">
+        
+        {/* Left Side: Typography & CTA */}
+        <div className="flex flex-col gap-8">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.65 }}
-            className="flex flex-wrap items-center justify-center gap-4 mt-10 md:mt-12"
+            transition={{ duration: 0.6 }}
           >
-            <motion.a
-              href={WHATSAPP_URL}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-primary text-sm font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              Next-Gen Web Architecture
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-glow-white leading-[1.1]">
+              Websites Built To <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400 text-glow">
+                Grow Businesses.
+              </span>
+            </h1>
+          </motion.div>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg text-white/60 max-w-xl leading-relaxed"
+          >
+            We create high-performance websites, landing pages, and digital experiences that help businesses attract customers and grow online.
+          </motion.p>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-wrap items-center gap-4 pt-4"
+          >
+            <motion.a 
+              href="https://wa.me/918427144836" 
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="group flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full bg-primary text-black font-bold text-sm md:text-base hover:bg-[#8aff5c] hover:shadow-[0_0_30px_rgba(124,255,79,0.45)] transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-primary text-black font-bold hover:bg-[#8aff5c] hover:shadow-[0_0_30px_rgba(124,255,79,0.5)] transition-all duration-300"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
               WhatsApp
             </motion.a>
-            <motion.a
-              href={LINKEDIN_URL}
+            <motion.a 
+              href="https://www.linkedin.com/in/mriganshu-kumar-singh-578478379?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="group flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 rounded-full bg-white/5 backdrop-blur-md border border-white/15 text-white font-medium text-sm md:text-base hover:border-primary/50 hover:text-primary hover:shadow-[0_0_20px_rgba(124,255,79,0.15)] transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 text-white font-medium hover:border-primary/50 hover:shadow-[0_0_20px_rgba(124,255,79,0.2)] hover:text-primary transition-all duration-300"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
               LinkedIn
             </motion.a>
           </motion.div>
+        </div>
+
+        {/* Right Side: 3D Mockup & Floating Cards */}
+        <div className="relative h-[600px] w-full hidden lg:block">
+          {/* Animated Glow Rings behind laptop */}
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-primary/20 border-dashed"
+          />
+          <motion.div 
+            animate={{ rotate: -360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-emerald-500/20"
+          />
+
+          {/* 3D Laptop Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center z-10"
+          >
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image 
+                src="/laptop.png" 
+                alt="3D Futuristic Laptop Mockup" 
+                width={700} 
+                height={700}
+                className="drop-shadow-[0_0_50px_rgba(124,255,79,0.3)] object-contain"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* Floating Analytics Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="absolute top-20 right-0 z-20"
+          >
+            <div className="glass-panel p-4 rounded-xl flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                <Activity className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <p className="text-xs text-white/60 uppercase font-medium">Conversion Rate</p>
+                <p className="text-xl font-bold text-white">+48.5%</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="absolute bottom-32 left-0 z-20"
+          >
+            <div className="glass-panel p-4 rounded-xl flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                <Zap className="w-5 h-5 text-emerald-400" />
+              </div>
+              <div>
+                <p className="text-xs text-white/60 uppercase font-medium">Page Speed</p>
+                <p className="text-xl font-bold text-white">99/100</p>
+              </div>
+            </div>
+          </motion.div>
+          
         </div>
       </div>
     </section>

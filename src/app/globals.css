@@ -43,14 +43,15 @@
 @layer utilities {
   .glass-panel {
     background: var(--color-panel);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--color-border);
   }
   
   .glass-panel:hover {
     background: var(--color-panel-hover);
     border-color: var(--color-border-glow);
+    box-shadow: 0 0 20px var(--color-primary-glow);
   }
   
   .text-glow {
