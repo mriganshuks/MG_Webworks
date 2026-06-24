@@ -5,6 +5,7 @@ import { FounderMessage } from "@/components/sections/FounderMessage";
 import { motion } from "framer-motion";
 import { Code2, Paintbrush, Box, Zap, Rocket, Users, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -69,28 +70,70 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2].map((item) => (
-              <motion.div 
-                key={item}
-                initial="hidden" whileInView="visible" viewport={{ once: true }}
-                variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}
-                className="group relative rounded-3xl overflow-hidden glass-panel aspect-video border-white/10"
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent z-10" />
-                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-                
-                {/* Placeholder for project image */}
-                <div className="absolute inset-0 bg-[#111] flex items-center justify-center">
-                  <span className="text-white/20 font-bold text-4xl">PROJECT {item}</span>
-                </div>
+            {/* Project 1 — MG Visual (Featured) */}
+            <motion.a
+              href="https://mgvisual.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}
+              className="group relative block rounded-3xl overflow-hidden glass-panel aspect-video border-white/10 cursor-pointer transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(124,255,79,0.15)]"
+            >
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src="/portfolio/mg-visual-featured.webp"
+                  alt="MG Visual — Creative Portfolio Website"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-[center_35%] transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+              </div>
 
-                <div className="absolute bottom-0 left-0 w-full p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-3 border border-primary/30 backdrop-blur-md">WEB3 PLATFORM</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Nexus Exchange</h3>
-                  <p className="text-white/70 text-sm">A highly interactive crypto trading platform with real-time 3D data visualization.</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+
+              <div className="absolute top-6 right-6 z-20 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
+                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/40 backdrop-blur-md">
+                  Live Website ↗
+                </span>
+              </div>
+
+              <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-3 border border-primary/30 backdrop-blur-md">
+                  FEATURED PROJECT
                 </div>
-              </motion.div>
-            ))}
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
+                  MG Visual
+                </h3>
+                <p className="text-white/70 text-sm leading-relaxed max-w-md">
+                  A modern visual portfolio experience focused on premium design, immersive interactions, smooth animations, and high-end digital presentation.
+                </p>
+              </div>
+            </motion.a>
+
+            {/* Project 2 — unchanged */}
+            <motion.div 
+              key={2}
+              initial="hidden" whileInView="visible" viewport={{ once: true }}
+              variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}
+              className="group relative rounded-3xl overflow-hidden glass-panel aspect-video border-white/10"
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent z-10" />
+              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+              
+              <div className="absolute inset-0 bg-[#111] flex items-center justify-center">
+                <span className="text-white/20 font-bold text-4xl">PROJECT 2</span>
+              </div>
+
+              <div className="absolute bottom-0 left-0 w-full p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-3 border border-primary/30 backdrop-blur-md">WEB3 PLATFORM</div>
+                <h3 className="text-2xl font-bold text-white mb-2">Nexus Exchange</h3>
+                <p className="text-white/70 text-sm">A highly interactive crypto trading platform with real-time 3D data visualization.</p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
