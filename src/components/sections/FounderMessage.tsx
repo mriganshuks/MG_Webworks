@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 export function FounderMessage() {
   return (
@@ -25,16 +26,26 @@ export function FounderMessage() {
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
             
-            {/* Avatar placeholder */}
+            {/* Avatar */}
             <div className="flex-shrink-0">
-              <div className="w-32 h-32 rounded-full border-2 border-primary/30 p-2 relative">
-                <div className="w-full h-full rounded-full bg-white/5 flex items-center justify-center overflow-hidden">
-                  {/* Placeholder for image */}
-                  <span className="text-4xl font-bold text-white/20">MKS</span>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="w-32 h-32 rounded-full border-2 border-primary/50 p-2 relative shadow-[0_0_20px_rgba(124,255,79,0.25)] hover:shadow-[0_0_35px_rgba(124,255,79,0.45)] hover:border-primary/80 transition-all duration-300"
+              >
+                <div className="w-full h-full rounded-full overflow-hidden relative bg-white/5 ring-1 ring-primary/30">
+                  <Image
+                    src="/founder-profile.webp"
+                    alt="Mriganshu K. Singh — Founder of MG Webworks"
+                    fill
+                    sizes="128px"
+                    className="object-cover object-center"
+                    priority
+                  />
                 </div>
                 {/* Online indicator dot */}
                 <div className="absolute bottom-2 right-2 w-4 h-4 bg-primary rounded-full border-2 border-[#050505] shadow-[0_0_10px_#7cff4f]" />
-              </div>
+              </motion.div>
             </div>
 
             {/* Content */}
