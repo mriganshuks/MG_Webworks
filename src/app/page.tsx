@@ -95,22 +95,19 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent z-10 pointer-events-none" />
               <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
 
-              <div className="absolute top-6 right-6 z-20 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
-                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/40 backdrop-blur-md">
+              <div className="absolute top-6 left-6 z-20 pointer-events-none">
+                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary/25 text-primary text-xs font-bold border border-primary/50 backdrop-blur-md shadow-[0_0_18px_rgba(124,255,79,0.45)]">
                   Live Website ↗
                 </span>
               </div>
 
-              <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
-                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-3 border border-primary/30 backdrop-blur-md">
+              <div className="absolute bottom-0 left-0 w-full p-5 sm:p-6 z-20 translate-y-3 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-2 border border-primary/30 backdrop-blur-md">
                   FEATURED PROJECT
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
+                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-glow transition-all duration-300">
                   MG Visual
                 </h3>
-                <p className="text-white/70 text-sm leading-relaxed max-w-md">
-                  A modern visual portfolio experience focused on premium design, immersive interactions, smooth animations, and high-end digital presentation.
-                </p>
               </div>
             </motion.a>
 
@@ -144,22 +141,13 @@ export default function Home() {
                 </span>
               </div>
 
-              <div className="absolute top-6 right-6 z-20 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
-                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/40 backdrop-blur-md">
-                  Live Website ↗
-                </span>
-              </div>
-
-              <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
-                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-3 border border-primary/30 backdrop-blur-md">
+              <div className="absolute bottom-0 left-0 w-full p-5 sm:p-6 z-20 translate-y-3 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none">
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold mb-2 border border-primary/30 backdrop-blur-md">
                   AI EXPERIENCE
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
+                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-glow transition-all duration-300">
                   MG Neon
                 </h3>
-                <p className="text-white/70 text-sm leading-relaxed max-w-md">
-                  An immersive AI-powered digital experience focused on futuristic design, intelligent interactions, and next-generation user experiences.
-                </p>
               </div>
             </motion.a>
           </div>
