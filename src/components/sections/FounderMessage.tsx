@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 
 export function FounderMessage() {
@@ -50,30 +49,14 @@ export function FounderMessage() {
 
             {/* Content */}
             <div className="flex-1 text-center md:text-left">
-              <p className="text-xl md:text-2xl text-white leading-relaxed mb-8 font-light italic">
+              <p className="text-xl md:text-2xl text-white leading-relaxed mb-6 font-light italic">
                 "Our goal is to create fast, modern, and memorable digital experiences that turn visitors into customers because great websites aren't built just to look good, they're built to help businesses grow."
               </p>
               
-              <div className="mb-10">
+              <div>
                 <h3 className="text-lg font-bold text-white mb-1">Mriganshu K. Singh</h3>
                 <p className="text-primary font-medium text-sm">The Lead Developer, MG Webworks</p>
               </div>
-
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-4">
-                {[
-                  "Modern Design",
-                  "Performance Focused",
-                  "Mobile Optimized",
-                  "Business Growth Driven"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-white/5 rounded-full px-4 py-2 border border-white/10">
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-medium text-white/80">{item}</span>
-                  </div>
-                ))}
-              </div>
-
             </div>
           </div>
         </motion.div>
