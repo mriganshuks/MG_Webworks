@@ -34,7 +34,7 @@ export function FounderMessage() {
               >
                 <div className="w-full h-full rounded-full overflow-hidden relative bg-white/5 ring-1 ring-primary/30">
                   <Image
-                    src="/founder-profile.webp"
+                    src="/founder-profile.jpg"
                     alt="Mriganshu K. Singh — Lead Developer at MG Webworks"
                     fill
                     sizes="128px"
