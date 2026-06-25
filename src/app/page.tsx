@@ -2,6 +2,7 @@
 
 import { Hero } from "@/components/sections/Hero";
 import { FounderMessage } from "@/components/sections/FounderMessage";
+import { ContactForm } from "@/components/sections/ContactForm";
 import { motion } from "framer-motion";
 import { Code2, Paintbrush, Box, Zap, Rocket, Users, MessageSquare } from "lucide-react";
 import Link from "next/link";
@@ -144,40 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact CTA Section */}
-      <section id="contact" className="py-32 relative">
-        <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-            className="glass-panel p-12 md:p-20 rounded-[3rem] border-primary/20 relative overflow-hidden"
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/5 blur-[100px] -z-10" />
-            
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-glow-white">Ready to elevate your digital presence?</h2>
-            <p className="text-lg text-white/60 mb-10 max-w-2xl mx-auto">
-              Partner with MG Webworks to build high-performance, premium web experiences that convert visitors into customers.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a 
-                href="https://wa.me/918427144836" 
-                target="_blank" 
-                rel="noopener"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary text-black font-bold hover:bg-white hover:box-glow transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <MessageSquare className="w-5 h-5" />
-                WhatsApp Me
-              </a>
-              <a 
-                href="mailto:hello@mgwebworks.com"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-white font-medium hover:text-primary transition-all duration-300"
-              >
-                Send an Email
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <ContactForm />
     </>
   );
 }
