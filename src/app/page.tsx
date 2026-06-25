@@ -58,12 +58,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+            className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
           >
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-glow-white">Featured Work</h2>
-              <p className="text-white/60 max-w-xl">Selected concepts that show the kind of polished, conversion-ready digital work MG Webworks delivers.</p>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-glow-white">Featured Work</h2>
             <Link href="#contact" className="text-primary hover:text-white transition-colors flex items-center gap-2 font-medium">
               View All Projects <ArrowRightIcon />
             </Link>
