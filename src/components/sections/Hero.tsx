@@ -19,7 +19,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-primary text-sm font-medium mb-6">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Next-Gen Web Architecture
+              Next-Gen Web, AI & Automation
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-glow-white leading-[1.1]">
               Websites Built To <br />
@@ -35,7 +35,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg text-white/60 max-w-xl leading-relaxed"
           >
-            We create high-performance websites, landing pages, and digital experiences that help businesses attract customers and grow online.
+            Premium digital experiences, powered by AI and engineered for performance.
           </motion.p>
           
           <motion.div 
