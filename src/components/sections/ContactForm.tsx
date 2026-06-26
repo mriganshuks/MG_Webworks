@@ -17,7 +17,6 @@ export function ContactForm() {
     phone: "",
     company: "",
     projectType: "",
-    budget: "",
     timeline: "",
     projectDescription: ""
   });
@@ -54,7 +53,6 @@ export function ContactForm() {
         phone: formData.phone || "Not provided",
         company: formData.company || "Not provided",
         project_type: formData.projectType || "Not specified",
-        budget: formData.budget || "Not specified",
         timeline: formData.timeline || "Not specified",
         project_description: formData.projectDescription || "Not provided",
         submission_date: new Date().toLocaleDateString(),
@@ -75,7 +73,6 @@ export function ContactForm() {
         phone: "",
         company: "",
         projectType: "",
-        budget: "",
         timeline: "",
         projectDescription: ""
       });
@@ -190,7 +187,7 @@ export function ContactForm() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300"
-                      placeholder="+91 84271 44836"
+                      placeholder="+91 9876543210"
                     />
                   </div>
 
@@ -225,24 +222,8 @@ export function ContactForm() {
                     </select>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-white/80 text-sm font-medium">Estimated Budget</label>
-                    <select
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300 cursor-pointer"
-                    >
-                      <option value="" className="bg-[#050505]">Select budget range</option>
-                      <option value="$1,000 - $5,000" className="bg-[#050505]">$1,000 - $5,000</option>
-                      <option value="$5,000 - $10,000" className="bg-[#050505]">$5,000 - $10,000</option>
-                      <option value="$10,000 - $25,000" className="bg-[#050505]">$10,000 - $25,000</option>
-                      <option value="$25,000 - $50,000" className="bg-[#050505]">$25,000 - $50,000</option>
-                      <option value="$50,000+" className="bg-[#050505]">$50,000+</option>
-                    </select>
-                  </div>
 
-                  <div className="space-y-2 md:col-span-2">
+                  <div className="space-y-2">
                     <label className="text-white/80 text-sm font-medium">Project Timeline</label>
                     <select
                       name="timeline"
