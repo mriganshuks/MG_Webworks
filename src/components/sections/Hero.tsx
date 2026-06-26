@@ -22,7 +22,7 @@ export function Hero() {
               Next-Gen Web, AI & Automation
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-glow-white leading-[1.1]">
-              Crafting Exceptional <br />
+              Crafting Premium <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400 text-glow">
                 Digital Experiences
               </span>
