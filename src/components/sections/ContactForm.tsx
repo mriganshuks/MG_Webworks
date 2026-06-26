@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, Loader2, Check, AlertCircle } from "lucide-react";
-import emailjs from "@emailjs/browser";
+import { MessageSquare, Loader2, Check } from "lucide-react";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -20,7 +19,7 @@ export function ContactForm() {
     timeline: "",
     projectDescription: ""
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateForm = () => {
@@ -46,44 +45,38 @@ export function ContactForm() {
     
     setStatus("loading");
     
-    try {
-      const templateParams = {
-        from_name: formData.fullName,
-        from_email: formData.email,
-        phone: formData.phone || "Not provided",
-        company: formData.company || "Not provided",
-        project_type: formData.projectType || "Not specified",
-        timeline: formData.timeline || "Not specified",
-        project_description: formData.projectDescription || "Not provided",
-        submission_date: new Date().toLocaleDateString(),
-        website_url: typeof window !== "undefined" ? window.location.href : "N/A"
-      };
-
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-      );
-
-      setStatus("success");
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        company: "",
-        projectType: "",
-        timeline: "",
-        projectDescription: ""
-      });
-      setErrors({});
-      
-      setTimeout(() => setStatus("idle"), 5000);
-    } catch (error) {
-      console.error("EmailJS error:", error);
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
-    }
+    // Simulate processing time for better UX
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // Format WhatsApp message
+    const message = `🚀 **New Project Inquiry**\n\n👤 Name:\n${formData.fullName}\n\n📧 Email:\n${formData.email}\n\n📱 Phone:\n${formData.phone || "Not provided"}\n\n🏢 Company:\n${formData.company || "Not provided"}\n\n💼 Project Type:\n${formData.projectType || "Not specified"}\n\n⏳ Timeline:\n${formData.timeline || "Not specified"}\n\n📝 Project Description:\n${formData.projectDescription || "Not provided"}\n\n━━━━━━━━━━━━━━━━━━━━━━\n\nSubmitted from:\nMG Webworks Website`;
+    
+    // URL encode the message
+    const encodedMessage = encodeURIComponent(message);
+    
+    // WhatsApp number
+    const whatsappNumber = "918427144836";
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    setStatus("success");
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      company: "",
+      projectType: "",
+      timeline: "",
+      projectDescription: ""
+    });
+    setErrors({});
+    
+    // Redirect to WhatsApp after showing success message
+    setTimeout(() => {
+      window.open(whatsappUrl, "_blank");
+      setStatus("idle");
+    }, 2000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -130,9 +123,9 @@ export function ContactForm() {
                 >
                   <Check className="w-10 h-10 text-primary" />
                 </motion.div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">✓ Project Request Sent</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">✓ Project inquiry prepared successfully</h3>
                 <p className="text-white/60 max-w-md mx-auto">
-                  We've received your project details. You'll receive a response within 24 hours.
+                  Redirecting to WhatsApp...
                 </p>
               </motion.div>
             ) : (
@@ -156,8 +149,8 @@ export function ContactForm() {
                       placeholder="John Doe"
                     />
                     {errors.fullName && (
-                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-xs flex items-center gap-1">
-                        <AlertCircle className="w-3 h-3" /> {errors.fullName}
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-xs">
+                        {errors.fullName}
                       </motion.p>
                     )}
                   </div>
@@ -173,8 +166,8 @@ export function ContactForm() {
                       placeholder="john@example.com"
                     />
                     {errors.email && (
-                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-xs flex items-center gap-1">
-                        <AlertCircle className="w-3 h-3" /> {errors.email}
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-xs">
+                        {errors.email}
                       </motion.p>
                     )}
                   </div>
@@ -253,16 +246,6 @@ export function ContactForm() {
                   </div>
                 </div>
 
-                {status === "error" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm flex items-center gap-2"
-                  >
-                    <AlertCircle className="w-4 h-4" />
-                    Something went wrong. Please try again.
-                  </motion.div>
-                )}
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <button
