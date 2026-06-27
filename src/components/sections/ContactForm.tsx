@@ -9,6 +9,8 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
+const whatsappNumber = "918427144836";
+
 export function ContactForm() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -20,46 +22,75 @@ export function ContactForm() {
     projectDescription: ""
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
-  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = "Full name is required";
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    const requiredFields: Array<keyof typeof formData> = [
+      "fullName",
+      "email",
+      "phone",
+      "projectType",
+      "timeline",
+      "projectDescription"
+    ];
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const isValid = requiredFields.every((field) => {
+      const value = formData[field].trim();
+      if (field === "email") {
+        return emailPattern.test(value);
+      }
+      return value.length > 0;
+    });
+
+    return isValid;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setStatus("loading");
-    
-    // Simulate processing time for better UX
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Format WhatsApp message
-    const message = `🚀 **New Project Inquiry**\n\n👤 Name:\n${formData.fullName}\n\n📧 Email:\n${formData.email}\n\n📱 Phone:\n${formData.phone || "Not provided"}\n\n🏢 Company:\n${formData.company || "Not provided"}\n\n💼 Project Type:\n${formData.projectType || "Not specified"}\n\n⏳ Timeline:\n${formData.timeline || "Not specified"}\n\n📝 Project Description:\n${formData.projectDescription || "Not provided"}\n\n━━━━━━━━━━━━━━━━━━━━━━\n\nSubmitted from:\nMG Webworks Website`;
-    
-    // URL encode the message
+
+    await new Promise((resolve) => setTimeout(resolve, 1400));
+
+    const message = [
+      "🚀 *New Project Inquiry*",
+      "",
+      "👤 Name:",
+      formData.fullName.trim(),
+      "",
+      "📧 Email:",
+      formData.email.trim(),
+      "",
+      "📱 Phone:",
+      formData.phone.trim() || "Not provided",
+      "",
+      "🏢 Company:",
+      formData.company.trim() || "Not provided",
+      "",
+      "💼 Project Type:",
+      formData.projectType.trim() || "Not specified",
+      "",
+      "⏳ Timeline:",
+      formData.timeline.trim() || "Not specified",
+      "",
+      "📝 Project Description:",
+      formData.projectDescription.trim() || "Not provided",
+      "",
+      "━━━━━━━━━━━━━━━━━━━━━━",
+      "",
+      "Submitted from:",
+      "MG Webworks Website"
+    ].join("\n");
+
     const encodedMessage = encodeURIComponent(message);
-    
-    // WhatsApp number
-    const whatsappNumber = "918427144836";
-    
-    // Create WhatsApp URL
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-    
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
+    const whatsappUrl = isMobile
+      ? `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+      : `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+
     setStatus("success");
     setFormData({
       fullName: "",
@@ -70,21 +101,15 @@ export function ContactForm() {
       timeline: "",
       projectDescription: ""
     });
-    setErrors({});
-    
-    // Redirect to WhatsApp after showing success message
-    setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
-      setStatus("idle");
-    }, 2000);
+
+    window.setTimeout(() => {
+      window.location.href = whatsappUrl;
+    }, 1800);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: "" }));
-    }
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -123,9 +148,9 @@ export function ContactForm() {
                 >
                   <Check className="w-10 h-10 text-primary" />
                 </motion.div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">✓ Project inquiry prepared successfully</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Project inquiry prepared successfully. Redirecting to WhatsApp...</h3>
                 <p className="text-white/60 max-w-md mx-auto">
-                  Redirecting to WhatsApp...
+                  Your lead details are being sent to the WhatsApp inbox for instant follow-up.
                 </p>
               </motion.div>
             ) : (
@@ -145,14 +170,10 @@ export function ContactForm() {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${errors.fullName ? 'border-red-500/50' : 'border-white/10'} text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300`}
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300"
                       placeholder="John Doe"
                     />
-                    {errors.fullName && (
-                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-xs">
-                        {errors.fullName}
-                      </motion.p>
-                    )}
                   </div>
 
                   <div className="space-y-2">
@@ -162,23 +183,20 @@ export function ContactForm() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300`}
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300"
                       placeholder="john@example.com"
                     />
-                    {errors.email && (
-                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-xs">
-                        {errors.email}
-                      </motion.p>
-                    )}
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-white/80 text-sm font-medium">Phone Number</label>
+                    <label className="text-white/80 text-sm font-medium">Phone Number *</label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300"
                       placeholder="+91 9876543210"
                     />
@@ -197,11 +215,12 @@ export function ContactForm() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-white/80 text-sm font-medium">Project Type</label>
+                    <label className="text-white/80 text-sm font-medium">Project Type *</label>
                     <select
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300 cursor-pointer"
                     >
                       <option value="" className="bg-[#050505]">Select project type</option>
@@ -217,11 +236,12 @@ export function ContactForm() {
 
 
                   <div className="space-y-2">
-                    <label className="text-white/80 text-sm font-medium">Project Timeline</label>
+                    <label className="text-white/80 text-sm font-medium">Project Timeline *</label>
                     <select
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300 cursor-pointer"
                     >
                       <option value="" className="bg-[#050505]">Select timeline</option>
@@ -234,12 +254,13 @@ export function ContactForm() {
                   </div>
 
                   <div className="space-y-2 md:col-span-2">
-                    <label className="text-white/80 text-sm font-medium">Project Description</label>
+                    <label className="text-white/80 text-sm font-medium">Project Description *</label>
                     <textarea
                       name="projectDescription"
                       value={formData.projectDescription}
                       onChange={handleChange}
                       rows={4}
+                      required
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300 resize-none"
                       placeholder="Tell us about your project goals, requirements, and any specific features you need..."
                     />
@@ -256,7 +277,7 @@ export function ContactForm() {
                     {status === "loading" ? (
                       <>
                         <Loader2 className="w-5 h-5 animate-spin" />
-                        Sending...
+                        Preparing lead...
                       </>
                     ) : (
                       "Submit Project →"
