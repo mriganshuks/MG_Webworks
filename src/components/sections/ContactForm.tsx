@@ -55,42 +55,33 @@ export function ContactForm() {
 
     await new Promise((resolve) => setTimeout(resolve, 1400));
 
-    const submittedAt = new Intl.DateTimeFormat("en-IN", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      hour: "numeric",
-      minute: "2-digit"
-    }).format(new Date());
-
     const message = [
-      "NEW PROJECT INQUIRY",
+      "🚀 *New Project Inquiry*",
       "",
-      "Name:",
+      "👤 Name:",
       formData.fullName.trim(),
       "",
-      "Email:",
+      "📧 Email:",
       formData.email.trim(),
       "",
-      "Phone:",
+      "📱 Phone:",
       formData.phone.trim() || "Not provided",
       "",
-      "Company / Brand:",
+      "🏢 Company:",
       formData.company.trim() || "Not provided",
       "",
-      "Project Type:",
+      "💼 Project Type:",
       formData.projectType.trim() || "Not specified",
       "",
-      "Project Timeline:",
+      "⏳ Timeline:",
       formData.timeline.trim() || "Not specified",
       "",
-      "Project Description:",
+      "📝 Project Description:",
       formData.projectDescription.trim() || "Not provided",
       "",
-      "Submitted On:",
-      submittedAt,
+      "━━━━━━━━━━━━━━━━━━━━━━",
       "",
-      "Source:",
+      "Submitted from:",
       "MG Webworks Website"
     ].join("\n");
 
