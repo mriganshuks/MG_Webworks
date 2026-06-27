@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, Loader2, Check } from "lucide-react";
 
@@ -10,6 +10,13 @@ const fadeIn = {
 };
 
 const whatsappNumber = "918427144836";
+
+const sanitizeTextValue = (value: string, maxLength: number) =>
+  value
+    .replace(/[\u0000-\u001f\u007f]/g, "")
+    .replace(/<[^>]*>/g, "")
+    .trim()
+    .slice(0, maxLength);
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -22,6 +29,7 @@ export function ContactForm() {
     projectDescription: ""
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const lastSubmissionRef = useRef(0);
 
   const validateForm = () => {
     const requiredFields: Array<keyof typeof formData> = [
@@ -36,7 +44,7 @@ export function ContactForm() {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const isValid = requiredFields.every((field) => {
-      const value = formData[field].trim();
+      const value = sanitizeTextValue(formData[field], field === "projectDescription" ? 2000 : 200);
       if (field === "email") {
         return emailPattern.test(value);
       }
@@ -51,37 +59,58 @@ export function ContactForm() {
 
     if (!validateForm()) return;
 
+    const now = Date.now();
+    if (now - lastSubmissionRef.current < 8000) return;
+    lastSubmissionRef.current = now;
+
     setStatus("loading");
 
     await new Promise((resolve) => setTimeout(resolve, 1400));
 
+    const safeFormData = {
+      fullName: sanitizeTextValue(formData.fullName, 120),
+      email: sanitizeTextValue(formData.email, 254),
+      phone: sanitizeTextValue(formData.phone, 24),
+      company: sanitizeTextValue(formData.company, 120),
+      projectType: sanitizeTextValue(formData.projectType, 80),
+      timeline: sanitizeTextValue(formData.timeline, 80),
+      projectDescription: sanitizeTextValue(formData.projectDescription, 2000)
+    };
+
     const message = [
-      "🚀 *New Project Inquiry*",
+      "NEW PROJECT INQUIRY",
       "",
-      "👤 Name:",
-      formData.fullName.trim(),
+      "Name:",
+      safeFormData.fullName,
       "",
-      "📧 Email:",
-      formData.email.trim(),
+      "Email:",
+      safeFormData.email,
       "",
-      "📱 Phone:",
-      formData.phone.trim() || "Not provided",
+      "Phone:",
+      safeFormData.phone || "Not provided",
       "",
-      "🏢 Company:",
-      formData.company.trim() || "Not provided",
+      "Company / Brand:",
+      safeFormData.company || "Not provided",
       "",
-      "💼 Project Type:",
-      formData.projectType.trim() || "Not specified",
+      "Project Type:",
+      safeFormData.projectType || "Not specified",
       "",
-      "⏳ Timeline:",
-      formData.timeline.trim() || "Not specified",
+      "Project Timeline:",
+      safeFormData.timeline || "Not specified",
       "",
-      "📝 Project Description:",
-      formData.projectDescription.trim() || "Not provided",
+      "Project Description:",
+      safeFormData.projectDescription || "Not provided",
       "",
-      "━━━━━━━━━━━━━━━━━━━━━━",
+      "Submitted On:",
+      new Intl.DateTimeFormat("en-IN", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        hour: "numeric",
+        minute: "2-digit"
+      }).format(new Date()),
       "",
-      "Submitted from:",
+      "Source:",
       "MG Webworks Website"
     ].join("\n");
 
@@ -121,7 +150,7 @@ export function ContactForm() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-glow-white">Ready to elevate your digital presence?</h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Tell us about your project and we'll get back to you within 24 hours.
+            Tell us about your project and we&apos;ll get back to you within 24 hours.
           </p>
         </motion.div>
 

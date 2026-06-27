@@ -4,7 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { FounderMessage } from "@/components/sections/FounderMessage";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { motion } from "framer-motion";
-import { Code2, Paintbrush, Box, Zap, Rocket, Users, MessageSquare } from "lucide-react";
+import { Code2, Paintbrush, Box } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 

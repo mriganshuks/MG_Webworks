@@ -50,7 +50,7 @@ export function FounderMessage() {
             {/* Content */}
             <div className="flex-1 text-center md:text-left">
               <p className="text-xl md:text-2xl text-white leading-relaxed mb-6 font-light italic">
-                "Our goal is to create fast, modern, and memorable digital experiences that turn visitors into customers because great websites aren't built just to look good, they're built to help businesses grow."
+                &quot;Our goal is to create fast, modern, and memorable digital experiences that turn visitors into customers because great websites aren&apos;t built just to look good, they&apos;re built to help businesses grow.&quot;
               </p>
               
               <div>
