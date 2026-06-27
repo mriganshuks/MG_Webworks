@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, Loader2, Check } from "lucide-react";
+import { MessageSquare, Loader2, Check, AlertCircle } from "lucide-react";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
-
-const whatsappNumber = "918427144836";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -21,7 +19,8 @@ export function ContactForm() {
     timeline: "",
     projectDescription: ""
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const validateForm = () => {
     const requiredFields: Array<keyof typeof formData> = [
@@ -49,62 +48,41 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      setErrorMessage("Please complete all required fields before submitting your inquiry.");
+      setStatus("error");
+      return;
+    }
 
     setStatus("loading");
+    setErrorMessage("");
 
-    await new Promise((resolve) => setTimeout(resolve, 1400));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
 
-    const message = [
-      "🚀 *New Project Inquiry*",
-      "",
-      "👤 Name:",
-      formData.fullName.trim(),
-      "",
-      "📧 Email:",
-      formData.email.trim(),
-      "",
-      "📱 Phone:",
-      formData.phone.trim() || "Not provided",
-      "",
-      "🏢 Company:",
-      formData.company.trim() || "Not provided",
-      "",
-      "💼 Project Type:",
-      formData.projectType.trim() || "Not specified",
-      "",
-      "⏳ Timeline:",
-      formData.timeline.trim() || "Not specified",
-      "",
-      "📝 Project Description:",
-      formData.projectDescription.trim() || "Not provided",
-      "",
-      "━━━━━━━━━━━━━━━━━━━━━━",
-      "",
-      "Submitted from:",
-      "MG Webworks Website"
-    ].join("\n");
+      const result = await response.json();
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || "Unable to submit your inquiry.");
+      }
 
-    const encodedMessage = encodeURIComponent(message);
-    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
-    const whatsappUrl = isMobile
-      ? `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
-      : `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
-
-    setStatus("success");
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      company: "",
-      projectType: "",
-      timeline: "",
-      projectDescription: ""
-    });
-
-    window.setTimeout(() => {
-      window.location.href = whatsappUrl;
-    }, 1800);
+      setStatus("success");
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        company: "",
+        projectType: "",
+        timeline: "",
+        projectDescription: ""
+      });
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Unable to submit your inquiry right now.");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -144,14 +122,37 @@ export function ContactForm() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                  className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6 border border-primary/40"
+                  className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6 border border-primary/40 shadow-[0_0_30px_rgba(124,255,79,0.2)]"
                 >
                   <Check className="w-10 h-10 text-primary" />
                 </motion.div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Project inquiry prepared successfully. Redirecting to WhatsApp...</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Project Inquiry Submitted Successfully</h3>
                 <p className="text-white/60 max-w-md mx-auto">
-                  Your lead details are being sent to the WhatsApp inbox for instant follow-up.
+                  Thank you for reaching out to MG Webworks. Your inquiry has been received successfully and is now under review by our team.
                 </p>
+                <p className="text-white/60 max-w-md mx-auto mt-3">
+                  We&apos;ll contact you as soon as possible with the next steps.
+                </p>
+              </motion.div>
+            ) : status === "error" ? (
+              <motion.div
+                key="error"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="text-center py-16"
+              >
+                <div className="w-20 h-20 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-6 border border-red-400/40">
+                  <AlertCircle className="w-10 h-10 text-red-400" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">We couldn&apos;t complete your submission</h3>
+                <p className="text-white/60 max-w-md mx-auto">{errorMessage || "Please try again in a moment."}</p>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="mt-6 px-6 py-3 rounded-xl bg-primary text-black font-semibold hover:bg-white transition-all duration-300"
+                >
+                  Try again
+                </button>
               </motion.div>
             ) : (
               <motion.form
@@ -285,13 +286,11 @@ export function ContactForm() {
                   </button>
                   
                   <a
-                    href="https://wa.me/918427144836"
-                    target="_blank"
-                    rel="noopener"
+                    href="#contact"
                     className="flex-1 px-8 py-4 rounded-xl glass-panel text-white font-medium hover:text-primary transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <MessageSquare className="w-5 h-5" />
-                    Chat on WhatsApp
+                    Review submission
                   </a>
                 </div>
               </motion.form>
