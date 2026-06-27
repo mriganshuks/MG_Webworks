@@ -18,33 +18,32 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Secure Lead Management Setup
+## EmailJS Setup
 
-The contact form now uses a secure server-side workflow to capture all inquiries, persist them, and send professional emails without exposing private details on the client.
+The contact form uses EmailJS to send project inquiries. To enable email functionality:
 
-### Required environment variables
+1. Sign up at [EmailJS](https://www.emailjs.com/)
+2. Create a new email service
+3. Create an email template with these variables:
+   - `{{from_name}}` - Full Name
+   - `{{from_email}}` - Email Address
+   - `{{phone}}` - Phone Number
+   - `{{company}}` - Company/Brand
+   - `{{project_type}}` - Project Type
+   - `{{budget}}` - Estimated Budget
+   - `{{timeline}}` - Project Timeline
+   - `{{project_description}}` - Project Description
+   - `{{submission_date}}` - Submission Date
+   - `{{website_url}}` - Website URL
 
-Create a `.env.local` file in the project root with:
+4. Create a `.env.local` file in the project root with:
+   ```
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
 
-```bash
-BUSINESS_EMAIL=mgwebworksglobal@gmail.com
-RESEND_API_KEY=your_resend_api_key
-RESEND_FROM_EMAIL="MG Webworks <onboarding@resend.dev>"
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-```
-
-### What happens on submission
-
-1. The form validates every required field on the server.
-2. The lead is stored in Supabase when configured, otherwise it is appended to a local JSONL file for development.
-3. A formatted notification email is sent to mgwebworksglobal@gmail.com.
-4. A confirmation email is sent to the client.
-5. The workflow uses AI-assisted categorization, urgency detection, and priority scoring internally.
-
-### Deployment note
-
-Add the same environment variables to your Vercel or hosting platform settings before deployment.
+5. Set the "To Email" in your EmailJS template to: `mriganshukumarsingh@gmail.com`
 
 ## Learn More
 
