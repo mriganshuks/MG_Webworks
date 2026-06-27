@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased bg-background text-foreground min-h-screen flex flex-col relative`}>
         {/* Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-ZWM0SFVCEG"
+          src="https://www.googletagmanager.com/gtag/js?id=GT-K54MV9TD"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
