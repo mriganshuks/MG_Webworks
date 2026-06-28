@@ -185,7 +185,7 @@ export default function Home() {
             >
               <div className="absolute inset-0 overflow-hidden">
                 <Image
-                  src="/portfolio/mg-magic.jpg"
+                  src="/portfolio/mg-magic.png"
                   alt="MG Magic — AI Creative Platform"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -236,7 +236,7 @@ export default function Home() {
             >
               <div className="absolute inset-0 overflow-hidden">
                 <Image
-                  src="/portfolio/mg-satoru.jpg"
+                  src="/portfolio/mg-satoru.png"
                   alt="MG Satoru — AI Workspace"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
