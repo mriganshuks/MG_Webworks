@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -10,9 +10,6 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "MG Webworks | Premium Digital Agency",
   description: "Websites Built To Grow Businesses. Premium SaaS and Web3 digital experiences.",
-  verification: {
-    google: "UsIH7ALy3cNc8YwOkTsQOFADY7SG6nBMOlvmUD-npGQ",
-  },
 };
 
 export default function RootLayout({
@@ -24,18 +21,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${inter.variable} antialiased bg-background text-foreground min-h-screen flex flex-col relative`}>
         {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=GT-K54MV9TD"
-          strategy="beforeInteractive"
-        />
-        <Script id="google-analytics" strategy="beforeInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-ZWM0SFVCEG');
-          `}
-        </Script>
+        <GoogleAnalytics gaId="G-DHC46XGNHS" />
 
         {/* Cinematic Ambient Background */}
         <div className="fixed inset-0 z-0 pointer-events-none bg-grid-pattern">
