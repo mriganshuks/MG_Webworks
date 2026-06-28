@@ -170,6 +170,107 @@ export default function Home() {
                 </p>
               </div>
             </motion.a>
+            {/* Project 3 — MG Magic */}
+            <motion.a
+              href="https://mgmagic.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="group relative block rounded-3xl overflow-hidden glass-panel aspect-video border-white/10 cursor-pointer transition-all duration-400 hover:border-primary/50 hover:shadow-[0_0_60px_rgba(124,255,79,0.3)]"
+            >
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src="/portfolio/mg-magic.jpg"
+                  alt="MG Magic — AI Creative Platform"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-115"
+                />
+              </div>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-10 pointer-events-none" />
+
+              {/* Floating LIVE badge */}
+              <div className="absolute top-4 right-4 z-30 pointer-events-none">
+                <div className="bg-primary/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(124,255,79,0.4)]">
+                  <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
+                    LIVE ↗
+                  </span>
+                </div>
+              </div>
+
+              <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 pointer-events-none">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
+                  MG Magic
+                </h3>
+                <p className="text-white/50 text-sm font-medium mb-3">
+                  AI Creative Platform
+                </p>
+                <p className="text-white/60 text-sm font-medium sm:hidden">
+                  Tap to Visit →
+                </p>
+                <p className="text-white/60 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 group-hover:text-primary hidden sm:block">
+                  Click to Visit Website →
+                </p>
+              </div>
+            </motion.a>
+
+            {/* Project 4 — MG Satoru */}
+            <motion.a
+              href="https://mgsatoru.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } } }}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="group relative block rounded-3xl overflow-hidden glass-panel aspect-video border-white/10 cursor-pointer transition-all duration-400 hover:border-primary/50 hover:shadow-[0_0_60px_rgba(124,255,79,0.3)]"
+            >
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src="/portfolio/mg-satoru.jpg"
+                  alt="MG Satoru — AI Workspace"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-115"
+                />
+              </div>
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-400 z-10 pointer-events-none" />
+
+              {/* Floating LIVE badge */}
+              <div className="absolute top-4 right-4 z-30 pointer-events-none">
+                <div className="bg-primary/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(124,255,79,0.4)]">
+                  <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
+                    LIVE ↗
+                  </span>
+                </div>
+              </div>
+
+              <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 pointer-events-none">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
+                  MG Satoru
+                </h3>
+                <p className="text-white/50 text-sm font-medium mb-3">
+                  AI Workspace
+                </p>
+                <p className="text-white/60 text-sm font-medium sm:hidden">
+                  Tap to Visit →
+                </p>
+                <p className="text-white/60 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 group-hover:text-primary hidden sm:block">
+                  Click to Visit Website →
+                </p>
+              </div>
+            </motion.a>
           </div>
         </div>
       </section>
