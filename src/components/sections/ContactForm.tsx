@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, Loader2, Check } from "lucide-react";
+import { Loader2, Check } from "lucide-react";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -294,11 +294,11 @@ export function ContactForm() {
                 </div>
 
 
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="pt-4">
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="flex-1 px-8 py-4 rounded-xl bg-primary text-black font-bold hover:bg-white hover:box-glow transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:hover:shadow-none"
+                    className="w-full px-8 py-4 rounded-xl bg-primary text-black font-bold hover:bg-white hover:box-glow transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:hover:shadow-none"
                   >
                     {status === "loading" ? (
                       <>
@@ -309,16 +309,6 @@ export function ContactForm() {
                       "Submit Project →"
                     )}
                   </button>
-                  
-                  <a
-                    href="https://wa.me/919876844836"
-                    target="_blank"
-                    rel="noopener"
-                    className="flex-1 px-8 py-4 rounded-xl glass-panel text-white font-medium hover:text-primary transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <MessageSquare className="w-5 h-5" />
-                    Chat on WhatsApp
-                  </a>
                 </div>
               </motion.form>
             )}
