@@ -9,7 +9,7 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
-const whatsappNumber = "918427144836";
+const whatsappNumber = "919876844836";
 
 const sanitizeTextValue = (value: string, maxLength: number) =>
   value
@@ -115,10 +115,7 @@ export function ContactForm() {
     ].join("\n");
 
     const encodedMessage = encodeURIComponent(message);
-    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent || "");
-    const whatsappUrl = isMobile
-      ? `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
-      : `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
     setStatus("success");
     setFormData({
@@ -132,7 +129,7 @@ export function ContactForm() {
     });
 
     window.setTimeout(() => {
-      window.location.href = whatsappUrl;
+      window.open(whatsappUrl, "_blank");
     }, 1800);
   };
 
@@ -314,7 +311,7 @@ export function ContactForm() {
                   </button>
                   
                   <a
-                    href="https://wa.me/918427144836"
+                    href="https://wa.me/919876844836"
                     target="_blank"
                     rel="noopener"
                     className="flex-1 px-8 py-4 rounded-xl glass-panel text-white font-medium hover:text-primary transition-all duration-300 flex items-center justify-center gap-2"

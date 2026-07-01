@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Activity, Zap, Shield } from "lucide-react";
+import { Activity, Zap } from "lucide-react";
 
 export function Hero() {
   return (
@@ -45,7 +44,7 @@ export function Hero() {
             className="flex flex-wrap items-center gap-4 pt-4"
           >
             <motion.a 
-              href="https://wa.me/918427144836" 
+              href="https://wa.me/919876844836" 
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
