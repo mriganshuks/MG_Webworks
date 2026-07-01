@@ -9,8 +9,6 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
-const whatsappNumber = "918427144836";
-
 const sanitizeTextValue = (value: string, maxLength: number) =>
   value
     .replace(/[\u0000-\u001f\u007f]/g, "")
@@ -77,10 +75,18 @@ export function ContactForm() {
       projectDescription: sanitizeTextValue(formData.projectDescription, 2000)
     };
 
+    const date = new Intl.DateTimeFormat("en-IN", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit"
+    }).format(new Date()).replace(", ", " • ");
+
     const message = [
-      "NEW PROJECT INQUIRY",
+      "New Project Inquiry",
       "",
-      "Name:",
+      "Full Name:",
       safeFormData.fullName,
       "",
       "Email:",
@@ -102,21 +108,15 @@ export function ContactForm() {
       safeFormData.projectDescription || "Not provided",
       "",
       "Submitted On:",
-      new Intl.DateTimeFormat("en-IN", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-        hour: "numeric",
-        minute: "2-digit"
-      }).format(new Date()),
+      date,
       "",
       "Source:",
       "MG Webworks Website"
     ].join("\n");
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
+    const mailtoUrl = `mailto:mgwebworksglobal@gmail.com?subject=New%20Project%20Inquiry%20%E2%80%93%20MG%20Webworks&body=${encodedMessage}`;
+    
     setStatus("success");
     setFormData({
       fullName: "",
@@ -129,7 +129,7 @@ export function ContactForm() {
     });
 
     window.setTimeout(() => {
-      window.open(whatsappUrl, "_blank");
+      window.location.href = mailtoUrl;
     }, 1800);
   };
 
@@ -174,9 +174,9 @@ export function ContactForm() {
                 >
                   <Check className="w-10 h-10 text-primary" />
                 </motion.div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Project inquiry prepared successfully. Redirecting to WhatsApp...</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Project inquiry prepared successfully. Opening your email client...</h3>
                 <p className="text-white/60 max-w-md mx-auto">
-                  Your lead details are being sent to the WhatsApp inbox for instant follow-up.
+                  Your lead details have been formatted and are ready to send via email.
                 </p>
               </motion.div>
             ) : (
