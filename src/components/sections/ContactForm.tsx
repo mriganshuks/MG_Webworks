@@ -9,7 +9,7 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
 
-const whatsappNumber = "919876844836";
+const whatsappNumber = "918427144836";
 
 const sanitizeTextValue = (value: string, maxLength: number) =>
   value
