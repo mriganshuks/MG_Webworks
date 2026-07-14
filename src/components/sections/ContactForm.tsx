@@ -198,7 +198,7 @@ export function ContactForm() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300"
-                      placeholder="John Doe"
+                      placeholder="Karan Khanna"
                     />
                   </div>
 
@@ -211,7 +211,7 @@ export function ContactForm() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300"
-                      placeholder="john@example.com"
+                      placeholder="karankhanna@xyz.com"
                     />
                   </div>
 

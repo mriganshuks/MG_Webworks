@@ -108,15 +108,7 @@ export default function Home() {
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
                   MG Visual
                 </h3>
-                <p className="text-white/50 text-sm font-medium mb-3">
-                  Creative Portfolio Website
-                </p>
-                <p className="text-white/60 text-sm font-medium sm:hidden">
-                  Tap to Visit →
-                </p>
-                <p className="text-white/60 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 group-hover:text-primary hidden sm:block">
-                  Click to Visit Website →
-                </p>
+
               </div>
             </motion.a>
 
@@ -159,15 +151,7 @@ export default function Home() {
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
                   MG Neon
                 </h3>
-                <p className="text-white/50 text-sm font-medium mb-3">
-                  AI Experience Platform
-                </p>
-                <p className="text-white/60 text-sm font-medium sm:hidden">
-                  Tap to Visit →
-                </p>
-                <p className="text-white/60 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 group-hover:text-primary hidden sm:block">
-                  Click to Visit Website →
-                </p>
+
               </div>
             </motion.a>
             {/* Project 3 — MG Magic */}
@@ -209,15 +193,7 @@ export default function Home() {
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
                   MG Magic
                 </h3>
-                <p className="text-white/50 text-sm font-medium mb-3">
-                  AI Creative Platform
-                </p>
-                <p className="text-white/60 text-sm font-medium sm:hidden">
-                  Tap to Visit →
-                </p>
-                <p className="text-white/60 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 group-hover:text-primary hidden sm:block">
-                  Click to Visit Website →
-                </p>
+
               </div>
             </motion.a>
 
@@ -258,17 +234,9 @@ export default function Home() {
 
               <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 pointer-events-none">
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-glow transition-all duration-300">
-                  MG Satoru
+                  MG Magic (V2)
                 </h3>
-                <p className="text-white/50 text-sm font-medium mb-3">
-                  AI Workspace
-                </p>
-                <p className="text-white/60 text-sm font-medium sm:hidden">
-                  Tap to Visit →
-                </p>
-                <p className="text-white/60 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 group-hover:text-primary hidden sm:block">
-                  Click to Visit Website →
-                </p>
+
               </div>
             </motion.a>
           </div>
