@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import { LampContainer } from "@/components/ui/lamp";
+import ShaderBackground from "@/components/ui/shader-background";
 import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 pb-10 overflow-hidden w-full">
+      <ShaderBackground />
       <LampContainer>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -18,11 +20,6 @@ export function Hero() {
           }}
           className="flex flex-col items-center text-center max-w-4xl mx-auto z-50 relative mt-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-primary text-sm font-medium mb-8">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            Next-Gen Web, AI & Automation
-          </div>
-          
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6">
             Premium Digital <br className="hidden sm:block" /> Experiences
           </h1>
