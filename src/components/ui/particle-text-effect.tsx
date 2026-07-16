@@ -163,19 +163,28 @@ export function ParticleTextEffect({ className }: { className?: string }) {
     }
   }
 
-  const renderText = (canvas: HTMLCanvasElement) => {
+  const renderText = (canvas: HTMLCanvasElement, isMobile: boolean) => {
     const offscreenCanvas = document.createElement("canvas")
     offscreenCanvas.width = canvas.width
     offscreenCanvas.height = canvas.height
     const offscreenCtx = offscreenCanvas.getContext("2d", { willReadFrequently: true })!
 
     offscreenCtx.fillStyle = "white"
-    offscreenCtx.font = "900 110px Inter, system-ui, sans-serif"
-    offscreenCtx.textAlign = "center"
-    offscreenCtx.textBaseline = "middle"
     
-    offscreenCtx.fillText("Premium Digital", canvas.width / 2, canvas.height / 2 - 55)
-    offscreenCtx.fillText("Experiences", canvas.width / 2, canvas.height / 2 + 65)
+    if (isMobile) {
+      offscreenCtx.font = "900 130px Inter, system-ui, sans-serif"
+      offscreenCtx.textAlign = "center"
+      offscreenCtx.textBaseline = "middle"
+      offscreenCtx.fillText("Premium", canvas.width / 2, canvas.height / 2 - 130)
+      offscreenCtx.fillText("Digital", canvas.width / 2, canvas.height / 2)
+      offscreenCtx.fillText("Experiences", canvas.width / 2, canvas.height / 2 + 130)
+    } else {
+      offscreenCtx.font = "900 110px Inter, system-ui, sans-serif"
+      offscreenCtx.textAlign = "center"
+      offscreenCtx.textBaseline = "middle"
+      offscreenCtx.fillText("Premium Digital", canvas.width / 2, canvas.height / 2 - 55)
+      offscreenCtx.fillText("Experiences", canvas.width / 2, canvas.height / 2 + 65)
+    }
 
     const imageData = offscreenCtx.getImageData(0, 0, canvas.width, canvas.height)
     const pixels = imageData.data
@@ -290,11 +299,25 @@ export function ParticleTextEffect({ className }: { className?: string }) {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    canvas.width = 1200
-    canvas.height = 360
+    const initCanvas = () => {
+      const isMobile = window.innerWidth < 768
+      canvas.width = isMobile ? 800 : 1200
+      canvas.height = isMobile ? 700 : 360
+      renderText(canvas, isMobile)
+    }
 
-    renderText(canvas)
+    initCanvas()
     animate()
+
+    let resizeTimeout: NodeJS.Timeout
+    const handleResize = () => {
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(() => {
+        initCanvas()
+      }, 200)
+    }
+    
+    window.addEventListener("resize", handleResize)
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
@@ -319,13 +342,15 @@ export function ParticleTextEffect({ className }: { className?: string }) {
       }
       canvas.removeEventListener("mousemove", handleMouseMove)
       canvas.removeEventListener("mouseleave", handleMouseLeave)
+      window.removeEventListener("resize", handleResize)
+      clearTimeout(resizeTimeout)
     }
   }, [])
 
   return (
     <canvas
       ref={canvasRef}
-      className={cn("w-full max-w-[900px] mx-auto cursor-default select-none", className)}
+      className={cn("w-full max-w-[800px] md:max-w-[1000px] mx-auto cursor-default select-none", className)}
       style={{ touchAction: "none" }}
     />
   )

@@ -11,9 +11,9 @@ export function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
+      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2 sm:py-4"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between glass-panel rounded-2xl px-6 py-3 transition-all duration-300">
+      <div className="max-w-7xl mx-auto flex items-center justify-between glass-panel rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300">
         <Link href="/" className="flex items-center gap-3 group transition-all duration-300">
           <Image
             src="/mg-webworks-logo.png"
@@ -21,7 +21,7 @@ export function Navbar() {
             width={147}
             height={96}
             priority
-            className="h-10 md:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-[1.03] group-hover:drop-shadow-[0_0_14px_rgba(124,255,79,0.55)]"
+            className="h-8 md:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-[1.03] group-hover:drop-shadow-[0_0_14px_rgba(124,255,79,0.55)]"
           />
           <span className="font-bold text-lg tracking-wide hidden sm:block text-glow-white transition-all duration-300 group-hover:text-glow">
             MG WEBWORKS
