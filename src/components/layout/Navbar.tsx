@@ -1,19 +1,50 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { GradientButton } from "@/components/ui/gradient-button";
 
 export function Navbar() {
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  useEffect(() => {
+    const sections = ["services", "portfolio", "process", "contact"];
+    const sectionElements = sections.map((id) => document.getElementById(id));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -60% 0px", // Trigger slightly before center
+      }
+    );
+
+    sectionElements.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sectionElements.forEach((el) => {
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, []);
+
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2 sm:py-4"
+      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2 sm:py-4 pointer-events-none"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between glass-panel rounded-xl sm:rounded-2xl px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300">
+      <div className="max-w-7xl mx-auto flex items-center justify-between glass-panel rounded-xl sm:rounded-[2rem] px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300 pointer-events-auto">
         <Link href="/" className="flex items-center gap-3 group transition-all duration-300">
           <Image
             src="/mg-webworks-logo.png"
@@ -28,10 +59,34 @@ export function Navbar() {
           </span>
         </Link>
         
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
-          <Link href="#services" className="hover:text-primary hover:text-glow transition-colors">Services</Link>
-          <Link href="#portfolio" className="hover:text-primary hover:text-glow transition-colors">Portfolio</Link>
-          <Link href="#process" className="hover:text-primary hover:text-glow transition-colors">Process</Link>
+        <nav className="hidden md:flex items-center gap-2">
+          <GradientButton 
+            variant="nav" 
+            size="sm" 
+            asChild 
+            data-active={activeSection === "services"}
+            className="rounded-full px-5 py-2 font-medium"
+          >
+            <Link href="#services">Services</Link>
+          </GradientButton>
+          <GradientButton 
+            variant="nav" 
+            size="sm" 
+            asChild 
+            data-active={activeSection === "portfolio"}
+            className="rounded-full px-5 py-2 font-medium"
+          >
+            <Link href="#portfolio">Portfolio</Link>
+          </GradientButton>
+          <GradientButton 
+            variant="nav" 
+            size="sm" 
+            asChild 
+            data-active={activeSection === "process"}
+            className="rounded-full px-5 py-2 font-medium"
+          >
+            <Link href="#process">Process</Link>
+          </GradientButton>
         </nav>
         
         <div className="flex items-center gap-4">

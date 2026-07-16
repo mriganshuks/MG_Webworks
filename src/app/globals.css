@@ -250,6 +250,41 @@
     --border-color-2: rgba(10, 102, 194, 0.3);
   }
 
+  .gradient-button-nav {
+    --color-1: #000;
+    --color-2: #050505;
+    --color-3: #0a0a0a;
+    --color-4: #111;
+    --color-5: #1a1a1a;
+    --border-angle: 200deg;
+    --border-color-1: rgba(255, 255, 255, 0.1);
+    --border-color-2: rgba(255, 255, 255, 0.02);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .gradient-button-nav:hover,
+  .gradient-button-nav[data-active="true"] {
+    --pos-x: 0%;
+    --pos-y: 95.51%;
+    --spread-x: 110.24%;
+    --spread-y: 110.2%;
+    --color-1: #050505;
+    --color-2: #0a0a0a;
+    --color-3: #111;
+    --color-4: #1a1a1a;
+    --color-5: #222;
+    --stop-1: 0%;
+    --stop-2: 10%;
+    --stop-3: 35.44%;
+    --stop-4: 71.34%;
+    --stop-5: 90.76%;
+    --border-angle: 210deg;
+    --border-color-1: rgba(124, 255, 79, 0.4);
+    --border-color-2: rgba(124, 255, 79, 0.1);
+    color: #fff;
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(124, 255, 79, 0.15);
+  }
+
   .gradient-button-live {
     --color-1: #000;
     --color-2: #1a4d1a;

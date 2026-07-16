@@ -22,6 +22,7 @@ const gradientButtonVariants = cva(
         linkedin: "gradient-button-linkedin",
         live: "gradient-button-live",
         outline: "gradient-button-outline",
+        nav: "gradient-button-nav",
       },
       size: {
         default: "rounded-xl px-8 py-4 font-bold text-base gap-2",
