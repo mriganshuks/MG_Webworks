@@ -5,6 +5,7 @@ import { LampContainer } from "@/components/ui/lamp";
 import ShaderBackground from "@/components/ui/shader-background";
 import { ArrowRight } from "lucide-react";
 import { GradientButton } from "@/components/ui/gradient-button";
+import { ParticleTextEffect } from "@/components/ui/particle-text-effect";
 
 export function Hero() {
   return (
@@ -21,9 +22,7 @@ export function Hero() {
           }}
           className="flex flex-col items-center text-center max-w-4xl mx-auto z-50 relative mt-16"
         >
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6">
-            Premium Digital <br className="hidden sm:block" /> Experiences
-          </h1>
+          <ParticleTextEffect className="mb-6" />
           
           <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10">
             Building modern websites, AI solutions, and automation systems designed for performance, scalability, and exceptional user experience.
