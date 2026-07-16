@@ -3,8 +3,9 @@
 import { Hero } from "@/components/sections/Hero";
 import { FounderMessage } from "@/components/sections/FounderMessage";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { motion } from "framer-motion";
-import { Code2, Paintbrush, Box } from "lucide-react";
+import { Code2, Paintbrush, Box, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -97,11 +98,13 @@ export default function Home() {
 
               {/* Floating LIVE badge */}
               <div className="absolute top-4 right-4 z-30 pointer-events-none">
-                <div className="bg-primary/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(124,255,79,0.4)]">
-                  <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
-                    LIVE ↗
-                  </span>
-                </div>
+                <GradientButton variant="live" asChild>
+                  <div className="!px-4 !py-2 !rounded-full !min-w-0">
+                    <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
+                      LIVE ↗
+                    </span>
+                  </div>
+                </GradientButton>
               </div>
 
               <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 pointer-events-none">
@@ -140,11 +143,13 @@ export default function Home() {
 
               {/* Floating LIVE badge */}
               <div className="absolute top-4 right-4 z-30 pointer-events-none">
-                <div className="bg-primary/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(124,255,79,0.4)]">
-                  <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
-                    LIVE ↗
-                  </span>
-                </div>
+                <GradientButton variant="live" asChild>
+                  <div className="!px-4 !py-2 !rounded-full !min-w-0">
+                    <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
+                      LIVE ↗
+                    </span>
+                  </div>
+                </GradientButton>
               </div>
 
               <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 pointer-events-none">
@@ -182,11 +187,13 @@ export default function Home() {
 
               {/* Floating LIVE badge */}
               <div className="absolute top-4 right-4 z-30 pointer-events-none">
-                <div className="bg-primary/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(124,255,79,0.4)]">
-                  <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
-                    LIVE ↗
-                  </span>
-                </div>
+                <GradientButton variant="live" asChild>
+                  <div className="!px-4 !py-2 !rounded-full !min-w-0">
+                    <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
+                      LIVE ↗
+                    </span>
+                  </div>
+                </GradientButton>
               </div>
 
               <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 pointer-events-none">
@@ -225,11 +232,13 @@ export default function Home() {
 
               {/* Floating LIVE badge */}
               <div className="absolute top-4 right-4 z-30 pointer-events-none">
-                <div className="bg-primary/90 backdrop-blur-sm px-3 py-1.5 rounded-full border border-primary/40 shadow-[0_0_20px_rgba(124,255,79,0.4)]">
-                  <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
-                    LIVE ↗
-                  </span>
-                </div>
+                <GradientButton variant="live" asChild>
+                  <div className="!px-4 !py-2 !rounded-full !min-w-0">
+                    <span className="text-[#050505] text-xs font-bold tracking-wider flex items-center gap-1">
+                      LIVE ↗
+                    </span>
+                  </div>
+                </GradientButton>
               </div>
 
               <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 z-20 pointer-events-none">

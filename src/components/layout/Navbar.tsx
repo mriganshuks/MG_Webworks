@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { GradientButton } from "@/components/ui/gradient-button";
 
 export function Navbar() {
   return (
@@ -34,12 +35,11 @@ export function Navbar() {
         </nav>
         
         <div className="flex items-center gap-4">
-          <Link 
-            href="#contact" 
-            className="px-5 py-2.5 rounded-xl bg-primary/10 text-primary border border-primary/30 font-medium hover:bg-primary hover:text-black hover:box-glow transition-all duration-300"
-          >
-            Start Project
-          </Link>
+          <GradientButton variant="outline" size="sm" asChild>
+            <Link href="#contact">
+              Start Project
+            </Link>
+          </GradientButton>
         </div>
       </div>
     </motion.header>

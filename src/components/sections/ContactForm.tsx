@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Loader2, Check } from "lucide-react";
+import { GradientButton } from "@/components/ui/gradient-button";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -295,10 +296,11 @@ export function ContactForm() {
 
 
                 <div className="pt-4">
-                  <button
+                  <GradientButton
+                    variant="primary"
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full px-8 py-4 rounded-xl bg-primary text-black font-bold hover:bg-white hover:box-glow transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:hover:shadow-none"
+                    className="w-full flex items-center justify-center gap-2"
                   >
                     {status === "loading" ? (
                       <>
@@ -308,7 +310,7 @@ export function ContactForm() {
                     ) : (
                       "Submit Project →"
                     )}
-                  </button>
+                  </GradientButton>
                 </div>
               </motion.form>
             )}
